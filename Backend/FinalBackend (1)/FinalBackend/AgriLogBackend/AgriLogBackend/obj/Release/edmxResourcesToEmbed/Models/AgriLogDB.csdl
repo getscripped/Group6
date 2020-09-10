@@ -1,0 +1,1888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgriLogDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AgriLogDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Audit_Trail" EntityType="AgriLogDBModel.Audit_Trail" />
+    <EntitySet Name="Clockeds" EntityType="AgriLogDBModel.Clocked" />
+    <EntitySet Name="Day_Of_Week" EntityType="AgriLogDBModel.Day_Of_Week" />
+    <EntitySet Name="Equipments" EntityType="AgriLogDBModel.Equipment" />
+    <EntitySet Name="Equipment_Type" EntityType="AgriLogDBModel.Equipment_Type" />
+    <EntitySet Name="Farms" EntityType="AgriLogDBModel.Farm" />
+    <EntitySet Name="Farm_Type" EntityType="AgriLogDBModel.Farm_Type" />
+    <EntitySet Name="Farm_User" EntityType="AgriLogDBModel.Farm_User" />
+    <EntitySet Name="Farm_User_User_Position" EntityType="AgriLogDBModel.Farm_User_User_Position" />
+    <EntitySet Name="FarmHealths" EntityType="AgriLogDBModel.FarmHealth" />
+    <EntitySet Name="Fault_Log" EntityType="AgriLogDBModel.Fault_Log" />
+    <EntitySet Name="Fault_Staff" EntityType="AgriLogDBModel.Fault_Staff" />
+    <EntitySet Name="Fault_Type" EntityType="AgriLogDBModel.Fault_Type" />
+    <EntitySet Name="Importances" EntityType="AgriLogDBModel.Importance" />
+    <EntitySet Name="Infrastructures" EntityType="AgriLogDBModel.Infrastructure" />
+    <EntitySet Name="Infrastructure_Type" EntityType="AgriLogDBModel.Infrastructure_Type" />
+    <EntitySet Name="Insurance_Provider" EntityType="AgriLogDBModel.Insurance_Provider" />
+    <EntitySet Name="Login_Trail" EntityType="AgriLogDBModel.Login_Trail" />
+    <EntitySet Name="Maintenance_Log" EntityType="AgriLogDBModel.Maintenance_Log" />
+    <EntitySet Name="Maintenance_Staff" EntityType="AgriLogDBModel.Maintenance_Staff" />
+    <EntitySet Name="Maintenance_Type" EntityType="AgriLogDBModel.Maintenance_Type" />
+    <EntitySet Name="Password_Changelog" EntityType="AgriLogDBModel.Password_Changelog" />
+    <EntitySet Name="Provinces" EntityType="AgriLogDBModel.Province" />
+    <EntitySet Name="Sections" EntityType="AgriLogDBModel.Section" />
+    <EntitySet Name="Section_Type" EntityType="AgriLogDBModel.Section_Type" />
+    <EntitySet Name="Skills" EntityType="AgriLogDBModel.Skill" />
+    <EntitySet Name="Staffs" EntityType="AgriLogDBModel.Staff" />
+    <EntitySet Name="Staff_Notification_Log" EntityType="AgriLogDBModel.Staff_Notification_Log" />
+    <EntitySet Name="Staff_Skill" EntityType="AgriLogDBModel.Staff_Skill" />
+    <EntitySet Name="Status" EntityType="AgriLogDBModel.Status" />
+    <EntitySet Name="Tasks" EntityType="AgriLogDBModel.Task" />
+    <EntitySet Name="Task_Skill" EntityType="AgriLogDBModel.Task_Skill" />
+    <EntitySet Name="Task_Task_Schedule" EntityType="AgriLogDBModel.Task_Task_Schedule" />
+    <EntitySet Name="Task_Type" EntityType="AgriLogDBModel.Task_Type" />
+    <EntitySet Name="Users" EntityType="AgriLogDBModel.User" />
+    <EntitySet Name="User_Notification_Log" EntityType="AgriLogDBModel.User_Notification_Log" />
+    <EntitySet Name="User_Position" EntityType="AgriLogDBModel.User_Position" />
+    <EntitySet Name="Vehicles" EntityType="AgriLogDBModel.Vehicle" />
+    <EntitySet Name="Vehicle_Brand" EntityType="AgriLogDBModel.Vehicle_Brand" />
+    <EntitySet Name="Vehicle_Make" EntityType="AgriLogDBModel.Vehicle_Make" />
+    <EntitySet Name="Vehicle_Model" EntityType="AgriLogDBModel.Vehicle_Model" />
+    <EntitySet Name="Vehicle_Repair" EntityType="AgriLogDBModel.Vehicle_Repair" />
+    <EntitySet Name="Vehicle_Repair_Document" EntityType="AgriLogDBModel.Vehicle_Repair_Document" />
+    <EntitySet Name="Vehicle_Service" EntityType="AgriLogDBModel.Vehicle_Service" />
+    <EntitySet Name="Vehicle_Service_Document" EntityType="AgriLogDBModel.Vehicle_Service_Document" />
+    <EntitySet Name="Vehicle_Service_Provider" EntityType="AgriLogDBModel.Vehicle_Service_Provider" />
+    <EntitySet Name="Vehicle_Type" EntityType="AgriLogDBModel.Vehicle_Type" />
+    <EntitySet Name="database_firewall_rules" EntityType="AgriLogDBModel.database_firewall_rules" />
+    <AssociationSet Name="FK_Audit_Trail_Farm" Association="AgriLogDBModel.FK_Audit_Trail_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Audit_Trail" EntitySet="Audit_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Audit_Trail_User" Association="AgriLogDBModel.FK_Audit_Trail_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Audit_Trail" EntitySet="Audit_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clocked_Staff" Association="AgriLogDBModel.FK_Clocked_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Clocked" EntitySet="Clockeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Day_Of_Week" Association="AgriLogDBModel.FK_Task_Task_Schedule_Day_Of_Week">
+      <End Role="Day_Of_Week" EntitySet="Day_Of_Week" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Equipment_Type" Association="AgriLogDBModel.FK_Equipment_Equipment_Type">
+      <End Role="Equipment_Type" EntitySet="Equipment_Type" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Farm" Association="AgriLogDBModel.FK_Equipment_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Infrastructure" Association="AgriLogDBModel.FK_Equipment_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Section" Association="AgriLogDBModel.FK_Equipment_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Equipment" Association="AgriLogDBModel.FK_Fault_Log_Equipment">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Equipment" Association="AgriLogDBModel.FK_Maintenance_Log_Equipment">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Equipment" Association="AgriLogDBModel.FK_Task_Equipment">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Type_Farm" Association="AgriLogDBModel.FK_Equipment_Type_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Equipment_Type" EntitySet="Equipment_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Farm_Type" Association="AgriLogDBModel.FK_Farm_Farm_Type">
+      <End Role="Farm_Type" EntitySet="Farm_Type" />
+      <End Role="Farm" EntitySet="Farms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Insurance_Provider" Association="AgriLogDBModel.FK_Farm_Insurance_Provider">
+      <End Role="Insurance_Provider" EntitySet="Insurance_Provider" />
+      <End Role="Farm" EntitySet="Farms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Province" Association="AgriLogDBModel.FK_Farm_Province">
+      <End Role="Province" EntitySet="Provinces" />
+      <End Role="Farm" EntitySet="Farms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_Position_Farm" Association="AgriLogDBModel.FK_Farm_User_Position_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmHealth_Farm" Association="AgriLogDBModel.FK_FarmHealth_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="FarmHealth" EntitySet="FarmHealths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Type_Farm" Association="AgriLogDBModel.FK_Fault_Type_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Fault_Type" EntitySet="Fault_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Farm" Association="AgriLogDBModel.FK_Section_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Section" EntitySet="Sections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Type_Farm" Association="AgriLogDBModel.FK_Section_Type_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Section_Type" EntitySet="Section_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Skill_Farm" Association="AgriLogDBModel.FK_Skill_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Skill" EntitySet="Skills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Farm" Association="AgriLogDBModel.FK_Staff_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Farm" Association="AgriLogDBModel.FK_Task_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Farm" Association="AgriLogDBModel.FK_Vehicle_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Provider_Farm" Association="AgriLogDBModel.FK_Vehicle_Service_Provider_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Type_Farm" Association="AgriLogDBModel.FK_Vehicle_Type_Farm">
+      <End Role="Farm" EntitySet="Farms" />
+      <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_User" Association="AgriLogDBModel.FK_Farm_User_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Farm_User" EntitySet="Farm_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_User_Position_Farm_User" Association="AgriLogDBModel.FK_Farm_User_User_Position_Farm_User">
+      <End Role="Farm_User" EntitySet="Farm_User" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_Position_User_Position" Association="AgriLogDBModel.FK_Farm_User_Position_User_Position">
+      <End Role="User_Position" EntitySet="User_Position" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Fault_Type" Association="AgriLogDBModel.FK_Fault_Log_Fault_Type">
+      <End Role="Fault_Type" EntitySet="Fault_Type" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Importance" Association="AgriLogDBModel.FK_Fault_Log_Importance">
+      <End Role="Importance" EntitySet="Importances" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Infrastructure" Association="AgriLogDBModel.FK_Fault_Log_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Section" Association="AgriLogDBModel.FK_Fault_Log_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Status" Association="AgriLogDBModel.FK_Fault_Log_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Staff_Fault_Log" Association="AgriLogDBModel.FK_Fault_Staff_Fault_Log">
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+      <End Role="Fault_Staff" EntitySet="Fault_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Staff_Staff" Association="AgriLogDBModel.FK_Fault_Staff_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Fault_Staff" EntitySet="Fault_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Importance" Association="AgriLogDBModel.FK_Maintenance_Log_Importance">
+      <End Role="Importance" EntitySet="Importances" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Importance" Association="AgriLogDBModel.FK_Task_Importance">
+      <End Role="Importance" EntitySet="Importances" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Infrastructure_Infrastructure_Type" Association="AgriLogDBModel.FK_Infrastructure_Infrastructure_Type">
+      <End Role="Infrastructure_Type" EntitySet="Infrastructure_Type" />
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Infrastructure_Section" Association="AgriLogDBModel.FK_Infrastructure_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Infrastructure" Association="AgriLogDBModel.FK_Maintenance_Log_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Infrastructure" Association="AgriLogDBModel.FK_Task_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Infrastructure" Association="AgriLogDBModel.FK_Vehicle_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructures" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Insurance_Provider_User" Association="AgriLogDBModel.FK_Insurance_Provider_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Insurance_Provider" EntitySet="Insurance_Provider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_Trail_User" Association="AgriLogDBModel.FK_Login_Trail_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Login_Trail" EntitySet="Login_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Maintenance_Type" Association="AgriLogDBModel.FK_Maintenance_Log_Maintenance_Type">
+      <End Role="Maintenance_Type" EntitySet="Maintenance_Type" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Section" Association="AgriLogDBModel.FK_Maintenance_Log_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Status" Association="AgriLogDBModel.FK_Maintenance_Log_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Staff_Maintenance_Log" Association="AgriLogDBModel.FK_Maintenance_Staff_Maintenance_Log">
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+      <End Role="Maintenance_Staff" EntitySet="Maintenance_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Staff_Staff" Association="AgriLogDBModel.FK_Maintenance_Staff_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Maintenance_Staff" EntitySet="Maintenance_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Password_Changelog_User" Association="AgriLogDBModel.FK_Password_Changelog_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Password_Changelog" EntitySet="Password_Changelog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Section_Type" Association="AgriLogDBModel.FK_Section_Section_Type">
+      <End Role="Section_Type" EntitySet="Section_Type" />
+      <End Role="Section" EntitySet="Sections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Section" Association="AgriLogDBModel.FK_Task_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Section" Association="AgriLogDBModel.FK_Vehicle_Section">
+      <End Role="Section" EntitySet="Sections" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Skill_Skill" Association="AgriLogDBModel.FK_Staff_Skill_Skill">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="Staff_Skill" EntitySet="Staff_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Skill_Skill" Association="AgriLogDBModel.FK_Task_Skill_Skill">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="Task_Skill" EntitySet="Task_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Notification_Log_Staff" Association="AgriLogDBModel.FK_Staff_Notification_Log_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Staff_Notification_Log" EntitySet="Staff_Notification_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Skill_Staff" Association="AgriLogDBModel.FK_Staff_Skill_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Staff_Skill" EntitySet="Staff_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Staff" Association="AgriLogDBModel.FK_Task_Task_Schedule_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Status" Association="AgriLogDBModel.FK_Task_Task_Schedule_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Status" Association="AgriLogDBModel.FK_Vehicle_Repair_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Status" Association="AgriLogDBModel.FK_Vehicle_Service_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Vehicle_Service" EntitySet="Vehicle_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Skill_Task" Association="AgriLogDBModel.FK_Task_Skill_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Task_Skill" EntitySet="Task_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task" Association="AgriLogDBModel.FK_Task_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Task1" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Task" Association="AgriLogDBModel.FK_Task_Task_Schedule_Task">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Type" Association="AgriLogDBModel.FK_Task_Task_Type">
+      <End Role="Task_Type" EntitySet="Task_Type" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Notification_Log_User" Association="AgriLogDBModel.FK_User_Notification_Log_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User_Notification_Log" EntitySet="User_Notification_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle" Association="AgriLogDBModel.FK_Vehicle_Repair_Vehicle">
+      <End Role="Vehicle" EntitySet="Vehicles" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Vehicle_Brand" Association="AgriLogDBModel.FK_Vehicle_Vehicle_Brand">
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Vehicle_Type" Association="AgriLogDBModel.FK_Vehicle_Vehicle_Type">
+      <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Brand_Vehicle_Make" Association="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Make">
+      <End Role="Vehicle_Make" EntitySet="Vehicle_Make" />
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Brand_Vehicle_Model" Association="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Model">
+      <End Role="Vehicle_Model" EntitySet="Vehicle_Model" />
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle_Repair_Document" Association="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Repair_Document">
+      <End Role="Vehicle_Repair_Document" EntitySet="Vehicle_Repair_Document" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle_Service_Provider" Association="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Service_Provider">
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Vehicle_Service_Provider" Association="AgriLogDBModel.FK_Vehicle_Service_Vehicle_Service_Provider">
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+      <End Role="Vehicle_Service" EntitySet="Vehicle_Service" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Audit_Trail">
+    <Key>
+      <PropertyRef Name="Audit_Log_ID" />
+    </Key>
+    <Property Name="Audit_Log_ID" Type="Int32" Nullable="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <Property Name="User_Action" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Action_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Affected_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Audit_Trail_Farm" FromRole="Audit_Trail" ToRole="Farm" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_Audit_Trail_User" FromRole="Audit_Trail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Clocked">
+    <Key>
+      <PropertyRef Name="Clocked_ID" />
+    </Key>
+    <Property Name="Clocked_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="Clocked_In_Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Clocked_Out_Time" Type="Time" Precision="7" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Clocked_Staff" FromRole="Clocked" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Day_Of_Week">
+    <Key>
+      <PropertyRef Name="Day_ID" />
+    </Key>
+    <Property Name="Day_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Day_Description" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Task_Task_Schedule" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Day_Of_Week" FromRole="Day_Of_Week" ToRole="Task_Task_Schedule" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Equipment_ID" />
+    </Key>
+    <Property Name="Equipment_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Equipment_Type_ID" Type="Int32" />
+    <Property Name="Infrastructure_ID" Type="Int32" />
+    <Property Name="Equipment_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipment_Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipment_Cost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <Property Name="Section_ID" Type="Int32" />
+    <NavigationProperty Name="Equipment_Type" Relationship="AgriLogDBModel.FK_Equipment_Equipment_Type" FromRole="Equipment" ToRole="Equipment_Type" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Equipment_Farm" FromRole="Equipment" ToRole="Farm" />
+    <NavigationProperty Name="Infrastructure" Relationship="AgriLogDBModel.FK_Equipment_Infrastructure" FromRole="Equipment" ToRole="Infrastructure" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Equipment_Section" FromRole="Equipment" ToRole="Section" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Equipment" FromRole="Equipment" ToRole="Fault_Log" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Equipment" FromRole="Equipment" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Equipment" FromRole="Equipment" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Equipment_Type">
+    <Key>
+      <PropertyRef Name="Equipment_Type_ID" />
+    </Key>
+    <Property Name="Equipment_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Equipment_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <NavigationProperty Name="Equipments" Relationship="AgriLogDBModel.FK_Equipment_Equipment_Type" FromRole="Equipment_Type" ToRole="Equipment" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Equipment_Type_Farm" FromRole="Equipment_Type" ToRole="Farm" />
+  </EntityType>
+  <EntityType Name="Farm">
+    <Key>
+      <PropertyRef Name="Farm_ID" />
+    </Key>
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Farm_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Province_ID" Type="Int32" Nullable="false" />
+    <Property Name="IP_ID" Type="Int32" />
+    <Property Name="Farm_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_Size" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_Address" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ContactNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_Avg_Health_Score" Type="Int32" Nullable="false" />
+    <Property Name="Is_Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Audit_Trail" Relationship="AgriLogDBModel.FK_Audit_Trail_Farm" FromRole="Farm" ToRole="Audit_Trail" />
+    <NavigationProperty Name="Equipments" Relationship="AgriLogDBModel.FK_Equipment_Farm" FromRole="Farm" ToRole="Equipment" />
+    <NavigationProperty Name="Equipment_Type" Relationship="AgriLogDBModel.FK_Equipment_Type_Farm" FromRole="Farm" ToRole="Equipment_Type" />
+    <NavigationProperty Name="Farm_Type" Relationship="AgriLogDBModel.FK_Farm_Farm_Type" FromRole="Farm" ToRole="Farm_Type" />
+    <NavigationProperty Name="Insurance_Provider" Relationship="AgriLogDBModel.FK_Farm_Insurance_Provider" FromRole="Farm" ToRole="Insurance_Provider" />
+    <NavigationProperty Name="Province" Relationship="AgriLogDBModel.FK_Farm_Province" FromRole="Farm" ToRole="Province" />
+    <NavigationProperty Name="Farm_User_User_Position" Relationship="AgriLogDBModel.FK_Farm_User_Position_Farm" FromRole="Farm" ToRole="Farm_User_User_Position" />
+    <NavigationProperty Name="FarmHealths" Relationship="AgriLogDBModel.FK_FarmHealth_Farm" FromRole="Farm" ToRole="FarmHealth" />
+    <NavigationProperty Name="Fault_Type" Relationship="AgriLogDBModel.FK_Fault_Type_Farm" FromRole="Farm" ToRole="Fault_Type" />
+    <NavigationProperty Name="Sections" Relationship="AgriLogDBModel.FK_Section_Farm" FromRole="Farm" ToRole="Section" />
+    <NavigationProperty Name="Section_Type" Relationship="AgriLogDBModel.FK_Section_Type_Farm" FromRole="Farm" ToRole="Section_Type" />
+    <NavigationProperty Name="Skills" Relationship="AgriLogDBModel.FK_Skill_Farm" FromRole="Farm" ToRole="Skill" />
+    <NavigationProperty Name="Staffs" Relationship="AgriLogDBModel.FK_Staff_Farm" FromRole="Farm" ToRole="Staff" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Farm" FromRole="Farm" ToRole="Task" />
+    <NavigationProperty Name="Vehicles" Relationship="AgriLogDBModel.FK_Vehicle_Farm" FromRole="Farm" ToRole="Vehicle" />
+    <NavigationProperty Name="Vehicle_Service_Provider" Relationship="AgriLogDBModel.FK_Vehicle_Service_Provider_Farm" FromRole="Farm" ToRole="Vehicle_Service_Provider" />
+    <NavigationProperty Name="Vehicle_Type" Relationship="AgriLogDBModel.FK_Vehicle_Type_Farm" FromRole="Farm" ToRole="Vehicle_Type" />
+  </EntityType>
+  <EntityType Name="Farm_Type">
+    <Key>
+      <PropertyRef Name="Farm_Type_ID" />
+    </Key>
+    <Property Name="Farm_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Farm_Type_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Farms" Relationship="AgriLogDBModel.FK_Farm_Farm_Type" FromRole="Farm_Type" ToRole="Farm" />
+  </EntityType>
+  <EntityType Name="Farm_User">
+    <Key>
+      <PropertyRef Name="Farm_User_ID" />
+    </Key>
+    <Property Name="Farm_User_ID" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Farm_User_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_User_Surname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_User_DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Farm_User_Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_User_Phone_Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_User_Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_Farm_User_User" FromRole="Farm_User" ToRole="User" />
+    <NavigationProperty Name="Farm_User_User_Position" Relationship="AgriLogDBModel.FK_Farm_User_User_Position_Farm_User" FromRole="Farm_User" ToRole="Farm_User_User_Position" />
+  </EntityType>
+  <EntityType Name="Farm_User_User_Position">
+    <Key>
+      <PropertyRef Name="farm_User_User_Position_ID" />
+    </Key>
+    <Property Name="Farm_User_ID" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="User_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <Property Name="farm_User_User_Position_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Farm_User_Position_Farm" FromRole="Farm_User_User_Position" ToRole="Farm" />
+    <NavigationProperty Name="Farm_User" Relationship="AgriLogDBModel.FK_Farm_User_User_Position_Farm_User" FromRole="Farm_User_User_Position" ToRole="Farm_User" />
+    <NavigationProperty Name="User_Position" Relationship="AgriLogDBModel.FK_Farm_User_Position_User_Position" FromRole="Farm_User_User_Position" ToRole="User_Position" />
+  </EntityType>
+  <EntityType Name="FarmHealth">
+    <Key>
+      <PropertyRef Name="Health_ID" />
+    </Key>
+    <Property Name="Health_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <Property Name="Health_Date_Calculated" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fault_Score" Type="Int32" />
+    <Property Name="Task_Score" Type="Int32" />
+    <Property Name="Vehicle_Score" Type="Int32" />
+    <Property Name="Maintenance_Score" Type="Int32" />
+    <Property Name="Overall_Score" Type="Int32" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_FarmHealth_Farm" FromRole="FarmHealth" ToRole="Farm" />
+  </EntityType>
+  <EntityType Name="Fault_Log">
+    <Key>
+      <PropertyRef Name="Fault_ID" />
+    </Key>
+    <Property Name="Fault_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FT_ID" Type="Int32" Nullable="false" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Infrastructure_ID" Type="Int32" />
+    <Property Name="Equipment_ID" Type="Int32" />
+    <Property Name="Importance_ID" Type="Int32" Nullable="false" />
+    <Property Name="Fault_Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Fault_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fault_End_Date" Type="DateTime" Precision="0" />
+    <Property Name="Fault_Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Section_ID" Type="Int32" />
+    <NavigationProperty Name="Equipment" Relationship="AgriLogDBModel.FK_Fault_Log_Equipment" FromRole="Fault_Log" ToRole="Equipment" />
+    <NavigationProperty Name="Fault_Type" Relationship="AgriLogDBModel.FK_Fault_Log_Fault_Type" FromRole="Fault_Log" ToRole="Fault_Type" />
+    <NavigationProperty Name="Importance" Relationship="AgriLogDBModel.FK_Fault_Log_Importance" FromRole="Fault_Log" ToRole="Importance" />
+    <NavigationProperty Name="Infrastructure" Relationship="AgriLogDBModel.FK_Fault_Log_Infrastructure" FromRole="Fault_Log" ToRole="Infrastructure" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Fault_Log_Section" FromRole="Fault_Log" ToRole="Section" />
+    <NavigationProperty Name="Status" Relationship="AgriLogDBModel.FK_Fault_Log_Status" FromRole="Fault_Log" ToRole="Status" />
+    <NavigationProperty Name="Fault_Staff" Relationship="AgriLogDBModel.FK_Fault_Staff_Fault_Log" FromRole="Fault_Log" ToRole="Fault_Staff" />
+  </EntityType>
+  <EntityType Name="Fault_Staff">
+    <Key>
+      <PropertyRef Name="FaultStaff_Id" />
+    </Key>
+    <Property Name="Fault_ID" Type="Int32" Nullable="false" />
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="FaultStaff_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Staff_Fault_Log" FromRole="Fault_Staff" ToRole="Fault_Log" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Fault_Staff_Staff" FromRole="Fault_Staff" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Fault_Type">
+    <Key>
+      <PropertyRef Name="FT_ID" />
+    </Key>
+    <Property Name="FT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FT_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Fault_Type_Farm" FromRole="Fault_Type" ToRole="Farm" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Fault_Type" FromRole="Fault_Type" ToRole="Fault_Log" />
+  </EntityType>
+  <EntityType Name="Importance">
+    <Key>
+      <PropertyRef Name="Importance_ID" />
+    </Key>
+    <Property Name="Importance_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Importance_Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Importance" FromRole="Importance" ToRole="Fault_Log" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Importance" FromRole="Importance" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Importance" FromRole="Importance" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Infrastructure">
+    <Key>
+      <PropertyRef Name="Infrastructure_ID" />
+    </Key>
+    <Property Name="Infrastructure_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Infrastructure_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Section_ID" Type="Int32" Nullable="false" />
+    <Property Name="Infrastructure_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Infrastructure_Location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Infrastructure_Size" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Equipments" Relationship="AgriLogDBModel.FK_Equipment_Infrastructure" FromRole="Infrastructure" ToRole="Equipment" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Infrastructure" FromRole="Infrastructure" ToRole="Fault_Log" />
+    <NavigationProperty Name="Infrastructure_Type" Relationship="AgriLogDBModel.FK_Infrastructure_Infrastructure_Type" FromRole="Infrastructure" ToRole="Infrastructure_Type" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Infrastructure_Section" FromRole="Infrastructure" ToRole="Section" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Infrastructure" FromRole="Infrastructure" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Infrastructure" FromRole="Infrastructure" ToRole="Task" />
+    <NavigationProperty Name="Vehicles" Relationship="AgriLogDBModel.FK_Vehicle_Infrastructure" FromRole="Infrastructure" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Infrastructure_Type">
+    <Key>
+      <PropertyRef Name="Infrastructure_Type_ID" />
+    </Key>
+    <Property Name="Infrastructure_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Infrastructure_Type_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Infrastructures" Relationship="AgriLogDBModel.FK_Infrastructure_Infrastructure_Type" FromRole="Infrastructure_Type" ToRole="Infrastructure" />
+  </EntityType>
+  <EntityType Name="Insurance_Provider">
+    <Key>
+      <PropertyRef Name="IP_ID" />
+    </Key>
+    <Property Name="IP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="IP_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IP_Reg_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IP_VAT_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IP_Phone_Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Farms" Relationship="AgriLogDBModel.FK_Farm_Insurance_Provider" FromRole="Insurance_Provider" ToRole="Farm" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_Insurance_Provider_User" FromRole="Insurance_Provider" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Login_Trail">
+    <Key>
+      <PropertyRef Name="Trail_ID" />
+    </Key>
+    <Property Name="Trail_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Login_DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Logout_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="User_IP_Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_Login_Trail_User" FromRole="Login_Trail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Maintenance_Log">
+    <Key>
+      <PropertyRef Name="Maintenance_ID" />
+    </Key>
+    <Property Name="Maintenance_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MT_ID" Type="Int32" Nullable="false" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Equipment_ID" Type="Int32" />
+    <Property Name="Infrastructure_ID" Type="Int32" />
+    <Property Name="Importance_ID" Type="Int32" Nullable="false" />
+    <Property Name="Maintenance_Description" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Maintenance_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Maintenance_End_Date" Type="DateTime" Precision="0" />
+    <Property Name="Maintenance_Image" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Section_ID" Type="Int32" />
+    <NavigationProperty Name="Equipment" Relationship="AgriLogDBModel.FK_Maintenance_Log_Equipment" FromRole="Maintenance_Log" ToRole="Equipment" />
+    <NavigationProperty Name="Importance" Relationship="AgriLogDBModel.FK_Maintenance_Log_Importance" FromRole="Maintenance_Log" ToRole="Importance" />
+    <NavigationProperty Name="Infrastructure" Relationship="AgriLogDBModel.FK_Maintenance_Log_Infrastructure" FromRole="Maintenance_Log" ToRole="Infrastructure" />
+    <NavigationProperty Name="Maintenance_Type" Relationship="AgriLogDBModel.FK_Maintenance_Log_Maintenance_Type" FromRole="Maintenance_Log" ToRole="Maintenance_Type" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Maintenance_Log_Section" FromRole="Maintenance_Log" ToRole="Section" />
+    <NavigationProperty Name="Status" Relationship="AgriLogDBModel.FK_Maintenance_Log_Status" FromRole="Maintenance_Log" ToRole="Status" />
+    <NavigationProperty Name="Maintenance_Staff" Relationship="AgriLogDBModel.FK_Maintenance_Staff_Maintenance_Log" FromRole="Maintenance_Log" ToRole="Maintenance_Staff" />
+  </EntityType>
+  <EntityType Name="Maintenance_Staff">
+    <Key>
+      <PropertyRef Name="Mainstaff_Id" />
+    </Key>
+    <Property Name="Maintenance_ID" Type="Int32" Nullable="false" />
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="Mainstaff_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Staff_Maintenance_Log" FromRole="Maintenance_Staff" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Maintenance_Staff_Staff" FromRole="Maintenance_Staff" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Maintenance_Type">
+    <Key>
+      <PropertyRef Name="MT_ID" />
+    </Key>
+    <Property Name="MT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MT_Description" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Maintenance_Type" FromRole="Maintenance_Type" ToRole="Maintenance_Log" />
+  </EntityType>
+  <EntityType Name="Password_Changelog">
+    <Key>
+      <PropertyRef Name="Changelog_ID" />
+    </Key>
+    <Property Name="Changelog_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="Date_Changed" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_Password_Changelog_User" FromRole="Password_Changelog" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Province_ID" />
+    </Key>
+    <Property Name="Province_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Province_Description" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Farms" Relationship="AgriLogDBModel.FK_Farm_Province" FromRole="Province" ToRole="Farm" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="Section_ID" />
+    </Key>
+    <Property Name="Section_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <Property Name="Section_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Section_Location" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Section_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Section_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipments" Relationship="AgriLogDBModel.FK_Equipment_Section" FromRole="Section" ToRole="Equipment" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Section_Farm" FromRole="Section" ToRole="Farm" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Section" FromRole="Section" ToRole="Fault_Log" />
+    <NavigationProperty Name="Infrastructures" Relationship="AgriLogDBModel.FK_Infrastructure_Section" FromRole="Section" ToRole="Infrastructure" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Section" FromRole="Section" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Section_Type" Relationship="AgriLogDBModel.FK_Section_Section_Type" FromRole="Section" ToRole="Section_Type" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Section" FromRole="Section" ToRole="Task" />
+    <NavigationProperty Name="Vehicles" Relationship="AgriLogDBModel.FK_Vehicle_Section" FromRole="Section" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Section_Type">
+    <Key>
+      <PropertyRef Name="Section_Type_ID" />
+    </Key>
+    <Property Name="Section_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Section_Type_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Section_Type_Farm" FromRole="Section_Type" ToRole="Farm" />
+    <NavigationProperty Name="Sections" Relationship="AgriLogDBModel.FK_Section_Section_Type" FromRole="Section_Type" ToRole="Section" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="Skill_ID" />
+    </Key>
+    <Property Name="Skill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Skill_Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Skill_Farm" FromRole="Skill" ToRole="Farm" />
+    <NavigationProperty Name="Staff_Skill" Relationship="AgriLogDBModel.FK_Staff_Skill_Skill" FromRole="Skill" ToRole="Staff_Skill" />
+    <NavigationProperty Name="Task_Skill" Relationship="AgriLogDBModel.FK_Task_Skill_Skill" FromRole="Skill" ToRole="Task_Skill" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Staff_ID" />
+    </Key>
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <Property Name="Staff_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_Surname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_Phone_Number" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_DoB" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Staff_Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clockeds" Relationship="AgriLogDBModel.FK_Clocked_Staff" FromRole="Staff" ToRole="Clocked" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Staff_Farm" FromRole="Staff" ToRole="Farm" />
+    <NavigationProperty Name="Fault_Staff" Relationship="AgriLogDBModel.FK_Fault_Staff_Staff" FromRole="Staff" ToRole="Fault_Staff" />
+    <NavigationProperty Name="Maintenance_Staff" Relationship="AgriLogDBModel.FK_Maintenance_Staff_Staff" FromRole="Staff" ToRole="Maintenance_Staff" />
+    <NavigationProperty Name="Staff_Notification_Log" Relationship="AgriLogDBModel.FK_Staff_Notification_Log_Staff" FromRole="Staff" ToRole="Staff_Notification_Log" />
+    <NavigationProperty Name="Staff_Skill" Relationship="AgriLogDBModel.FK_Staff_Skill_Staff" FromRole="Staff" ToRole="Staff_Skill" />
+    <NavigationProperty Name="Task_Task_Schedule" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Staff" FromRole="Staff" ToRole="Task_Task_Schedule" />
+  </EntityType>
+  <EntityType Name="Staff_Notification_Log">
+    <Key>
+      <PropertyRef Name="SNL_ID" />
+    </Key>
+    <Property Name="SNL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="SNL_Message" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Time_Sent" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Staff_Notification_Log_Staff" FromRole="Staff_Notification_Log" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Staff_Skill">
+    <Key>
+      <PropertyRef Name="StaffSkill_ID" />
+    </Key>
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="Skill_ID" Type="Int32" Nullable="false" />
+    <Property Name="StaffSkill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Skill" Relationship="AgriLogDBModel.FK_Staff_Skill_Skill" FromRole="Staff_Skill" ToRole="Skill" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Staff_Skill_Staff" FromRole="Staff_Skill" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Status_ID" />
+    </Key>
+    <Property Name="Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status_Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Fault_Log" Relationship="AgriLogDBModel.FK_Fault_Log_Status" FromRole="Status" ToRole="Fault_Log" />
+    <NavigationProperty Name="Maintenance_Log" Relationship="AgriLogDBModel.FK_Maintenance_Log_Status" FromRole="Status" ToRole="Maintenance_Log" />
+    <NavigationProperty Name="Task_Task_Schedule" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Status" FromRole="Status" ToRole="Task_Task_Schedule" />
+    <NavigationProperty Name="Vehicle_Repair" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Status" FromRole="Status" ToRole="Vehicle_Repair" />
+    <NavigationProperty Name="Vehicle_Service" Relationship="AgriLogDBModel.FK_Vehicle_Service_Status" FromRole="Status" ToRole="Vehicle_Service" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Task_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Task_Type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Importance_ID" Type="Int32" Nullable="false" />
+    <Property Name="Section_ID" Type="Int32" Nullable="false" />
+    <Property Name="Infrastructure_ID" Type="Int32" />
+    <Property Name="Equipment_ID" Type="Int32" />
+    <Property Name="Task_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Task_Duration" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Equipment" Relationship="AgriLogDBModel.FK_Task_Equipment" FromRole="Task" ToRole="Equipment" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Task_Farm" FromRole="Task" ToRole="Farm" />
+    <NavigationProperty Name="Importance" Relationship="AgriLogDBModel.FK_Task_Importance" FromRole="Task" ToRole="Importance" />
+    <NavigationProperty Name="Infrastructure" Relationship="AgriLogDBModel.FK_Task_Infrastructure" FromRole="Task" ToRole="Infrastructure" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Task_Section" FromRole="Task" ToRole="Section" />
+    <NavigationProperty Name="Task_Skill" Relationship="AgriLogDBModel.FK_Task_Skill_Task" FromRole="Task" ToRole="Task_Skill" />
+    <NavigationProperty Name="Task1" Relationship="AgriLogDBModel.FK_Task_Task" FromRole="Task" ToRole="Task1" />
+    <NavigationProperty Name="Task2" Relationship="AgriLogDBModel.FK_Task_Task" FromRole="Task1" ToRole="Task" />
+    <NavigationProperty Name="Task_Task_Schedule" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Task" FromRole="Task" ToRole="Task_Task_Schedule" />
+    <NavigationProperty Name="Task_Type" Relationship="AgriLogDBModel.FK_Task_Task_Type" FromRole="Task" ToRole="Task_Type" />
+  </EntityType>
+  <EntityType Name="Task_Skill">
+    <Key>
+      <PropertyRef Name="TS_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="Int32" Nullable="false" />
+    <Property Name="Skill_ID" Type="Int32" Nullable="false" />
+    <Property Name="TS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Skill" Relationship="AgriLogDBModel.FK_Task_Skill_Skill" FromRole="Task_Skill" ToRole="Skill" />
+    <NavigationProperty Name="Task" Relationship="AgriLogDBModel.FK_Task_Skill_Task" FromRole="Task_Skill" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Task_Task_Schedule">
+    <Key>
+      <PropertyRef Name="Schedule_ID" />
+    </Key>
+    <Property Name="Day_ID" Type="Int32" Nullable="false" />
+    <Property Name="Task_ID" Type="Int32" Nullable="false" />
+    <Property Name="Staff_ID" Type="Int32" Nullable="false" />
+    <Property Name="Schedule_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Schedule_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Schedule_End_Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Day_Of_Week" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Day_Of_Week" FromRole="Task_Task_Schedule" ToRole="Day_Of_Week" />
+    <NavigationProperty Name="Staff" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Staff" FromRole="Task_Task_Schedule" ToRole="Staff" />
+    <NavigationProperty Name="Status" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Status" FromRole="Task_Task_Schedule" ToRole="Status" />
+    <NavigationProperty Name="Task" Relationship="AgriLogDBModel.FK_Task_Task_Schedule_Task" FromRole="Task_Task_Schedule" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Task_Type">
+    <Key>
+      <PropertyRef Name="Task_Type_ID" />
+    </Key>
+    <Property Name="Task_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Task_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tasks" Relationship="AgriLogDBModel.FK_Task_Task_Type" FromRole="Task_Type" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User_Password" Type="String" Nullable="false" MaxLength="130" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Audit_Trail" Relationship="AgriLogDBModel.FK_Audit_Trail_User" FromRole="User" ToRole="Audit_Trail" />
+    <NavigationProperty Name="Farm_User" Relationship="AgriLogDBModel.FK_Farm_User_User" FromRole="User" ToRole="Farm_User" />
+    <NavigationProperty Name="Insurance_Provider" Relationship="AgriLogDBModel.FK_Insurance_Provider_User" FromRole="User" ToRole="Insurance_Provider" />
+    <NavigationProperty Name="Login_Trail" Relationship="AgriLogDBModel.FK_Login_Trail_User" FromRole="User" ToRole="Login_Trail" />
+    <NavigationProperty Name="Password_Changelog" Relationship="AgriLogDBModel.FK_Password_Changelog_User" FromRole="User" ToRole="Password_Changelog" />
+    <NavigationProperty Name="User_Notification_Log" Relationship="AgriLogDBModel.FK_User_Notification_Log_User" FromRole="User" ToRole="User_Notification_Log" />
+  </EntityType>
+  <EntityType Name="User_Notification_Log">
+    <Key>
+      <PropertyRef Name="UNL_ID" />
+    </Key>
+    <Property Name="UNL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="UNL_Message" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Time_Sent" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="User" Relationship="AgriLogDBModel.FK_User_Notification_Log_User" FromRole="User_Notification_Log" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User_Position">
+    <Key>
+      <PropertyRef Name="User_Type_ID" />
+    </Key>
+    <Property Name="User_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Type_Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Farm_User_User_Position" Relationship="AgriLogDBModel.FK_Farm_User_Position_User_Position" FromRole="User_Position" ToRole="Farm_User_User_Position" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="Vehicle_ID" />
+    </Key>
+    <Property Name="Vehicle_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vehicle_Type_ID" Type="Int32" />
+    <Property Name="Vehicle_Brand_ID" Type="Int32" />
+    <Property Name="Infrastructure_ID" Type="Int32" />
+    <Property Name="Section_ID" Type="Int32" />
+    <Property Name="Vehicle_Year" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Colour" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Mileage_Date_Of_Purchase" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Mileage_Current" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Service_Intervals" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Last_Service_Mileage" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Registration_Number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Date_Of_Purchase" Type="DateTime" Precision="0" />
+    <Property Name="Vehicle_Purchase_Price" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Vehicle_Farm" FromRole="Vehicle" ToRole="Farm" />
+    <NavigationProperty Name="Infrastructure" Relationship="AgriLogDBModel.FK_Vehicle_Infrastructure" FromRole="Vehicle" ToRole="Infrastructure" />
+    <NavigationProperty Name="Section" Relationship="AgriLogDBModel.FK_Vehicle_Section" FromRole="Vehicle" ToRole="Section" />
+    <NavigationProperty Name="Vehicle_Repair" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle" FromRole="Vehicle" ToRole="Vehicle_Repair" />
+    <NavigationProperty Name="Vehicle_Brand" Relationship="AgriLogDBModel.FK_Vehicle_Vehicle_Brand" FromRole="Vehicle" ToRole="Vehicle_Brand" />
+    <NavigationProperty Name="Vehicle_Type" Relationship="AgriLogDBModel.FK_Vehicle_Vehicle_Type" FromRole="Vehicle" ToRole="Vehicle_Type" />
+  </EntityType>
+  <EntityType Name="Vehicle_Brand">
+    <Key>
+      <PropertyRef Name="Vehicle_Brand_Id" />
+    </Key>
+    <Property Name="Vehicle_Brand_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Make_ID" Type="Int32" Nullable="false" />
+    <Property Name="Model_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Vehicles" Relationship="AgriLogDBModel.FK_Vehicle_Vehicle_Brand" FromRole="Vehicle_Brand" ToRole="Vehicle" />
+    <NavigationProperty Name="Vehicle_Make" Relationship="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Make" FromRole="Vehicle_Brand" ToRole="Vehicle_Make" />
+    <NavigationProperty Name="Vehicle_Model" Relationship="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Model" FromRole="Vehicle_Brand" ToRole="Vehicle_Model" />
+  </EntityType>
+  <EntityType Name="Vehicle_Make">
+    <Key>
+      <PropertyRef Name="Make_ID" />
+    </Key>
+    <Property Name="Make_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Make_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicle_Brand" Relationship="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Make" FromRole="Vehicle_Make" ToRole="Vehicle_Brand" />
+  </EntityType>
+  <EntityType Name="Vehicle_Model">
+    <Key>
+      <PropertyRef Name="Model_Id" />
+    </Key>
+    <Property Name="Model_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Model_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicle_Brand" Relationship="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Model" FromRole="Vehicle_Model" ToRole="Vehicle_Brand" />
+  </EntityType>
+  <EntityType Name="Vehicle_Repair">
+    <Key>
+      <PropertyRef Name="Vehicle_Repair_ID" />
+    </Key>
+    <Property Name="Vehicle_Repair_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Provider_ID" Type="Int32" Nullable="false" />
+    <Property Name="VRD_ID" Type="Int32" Nullable="false" />
+    <Property Name="Vehicle_ID" Type="Int32" Nullable="false" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Vehicle_Repair_Date_Started" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Vehicle_Repair_Date_Ended" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Vehicle_Repair_Cost" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Status" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Status" FromRole="Vehicle_Repair" ToRole="Status" />
+    <NavigationProperty Name="Vehicle" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle" FromRole="Vehicle_Repair" ToRole="Vehicle" />
+    <NavigationProperty Name="Vehicle_Repair_Document" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Repair_Document" FromRole="Vehicle_Repair" ToRole="Vehicle_Repair_Document" />
+    <NavigationProperty Name="Vehicle_Service_Provider" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Service_Provider" FromRole="Vehicle_Repair" ToRole="Vehicle_Service_Provider" />
+  </EntityType>
+  <EntityType Name="Vehicle_Repair_Document">
+    <Key>
+      <PropertyRef Name="VRD_ID" />
+    </Key>
+    <Property Name="VRD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VRD_Invoice" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicle_Repair" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Repair_Document" FromRole="Vehicle_Repair_Document" ToRole="Vehicle_Repair" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service">
+    <Key>
+      <PropertyRef Name="Vehicle_Service_ID" />
+    </Key>
+    <Property Name="Vehicle_Service_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Provider_ID" Type="Int32" Nullable="false" />
+    <Property Name="Vehicle_Service_Document" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_ID" Type="Int32" Nullable="false" />
+    <Property Name="Status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Vehicle_Service_Mileage" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Service_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Vehicle_Service_End_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Vehicle_Service_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Status" Relationship="AgriLogDBModel.FK_Vehicle_Service_Status" FromRole="Vehicle_Service" ToRole="Status" />
+    <NavigationProperty Name="Vehicle_Service_Provider" Relationship="AgriLogDBModel.FK_Vehicle_Service_Vehicle_Service_Provider" FromRole="Vehicle_Service" ToRole="Vehicle_Service_Provider" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service_Document">
+    <Key>
+      <PropertyRef Name="VSD_ID" />
+    </Key>
+    <Property Name="VSD_ID" Type="Int32" Nullable="false" />
+    <Property Name="VSD_INVOICE" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service_Provider">
+    <Key>
+      <PropertyRef Name="Provider_ID" />
+    </Key>
+    <Property Name="Provider_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Provider_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Provider_Contact_Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Provider_Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Active" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Provider_Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Vehicle_Service_Provider_Farm" FromRole="Vehicle_Service_Provider" ToRole="Farm" />
+    <NavigationProperty Name="Vehicle_Repair" Relationship="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Service_Provider" FromRole="Vehicle_Service_Provider" ToRole="Vehicle_Repair" />
+    <NavigationProperty Name="Vehicle_Service" Relationship="AgriLogDBModel.FK_Vehicle_Service_Vehicle_Service_Provider" FromRole="Vehicle_Service_Provider" ToRole="Vehicle_Service" />
+  </EntityType>
+  <EntityType Name="Vehicle_Type">
+    <Key>
+      <PropertyRef Name="Vehicle_Type_ID" />
+    </Key>
+    <Property Name="Vehicle_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vehicle_Type_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Farm_ID" Type="Int32" />
+    <NavigationProperty Name="Farm" Relationship="AgriLogDBModel.FK_Vehicle_Type_Farm" FromRole="Vehicle_Type" ToRole="Farm" />
+    <NavigationProperty Name="Vehicles" Relationship="AgriLogDBModel.FK_Vehicle_Vehicle_Type" FromRole="Vehicle_Type" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="start_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="end_ip_address" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Audit_Trail_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Audit_Trail" Role="Audit_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Audit_Trail">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Audit_Trail_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Audit_Trail" Role="Audit_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Audit_Trail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clocked_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Clocked" Role="Clocked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Clocked">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Day_Of_Week">
+    <End Type="AgriLogDBModel.Day_Of_Week" Role="Day_Of_Week" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Task_Schedule" Role="Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day_Of_Week">
+        <PropertyRef Name="Day_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Day_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Equipment_Type">
+    <End Type="AgriLogDBModel.Equipment_Type" Role="Equipment_Type" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment_Type">
+        <PropertyRef Name="Equipment_Type_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Equipment_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Infrastructure">
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Equipment">
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Equipment">
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Equipment">
+    <End Type="AgriLogDBModel.Equipment" Role="Equipment" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Type_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Equipment_Type" Role="Equipment_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Equipment_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Farm_Type">
+    <End Type="AgriLogDBModel.Farm_Type" Role="Farm_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm_Type">
+        <PropertyRef Name="Farm_Type_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="Farm_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Insurance_Provider">
+    <End Type="AgriLogDBModel.Insurance_Provider" Role="Insurance_Provider" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_Provider">
+        <PropertyRef Name="IP_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="IP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Province">
+    <End Type="AgriLogDBModel.Province" Role="Province" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Province_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="Province_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_Position_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm_User_User_Position" Role="Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmHealth_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.FarmHealth" Role="FarmHealth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="FarmHealth">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Type_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Fault_Type" Role="Fault_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Fault_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Type_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Section_Type" Role="Section_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Section_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Skill_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Skill" Role="Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Skill">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Provider_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Service_Provider" Role="Vehicle_Service_Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Type_Farm">
+    <End Type="AgriLogDBModel.Farm" Role="Farm" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle_Type" Role="Vehicle_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm_User" Role="Farm_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Farm_User">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_User_Position_Farm_User">
+    <End Type="AgriLogDBModel.Farm_User" Role="Farm_User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm_User_User_Position" Role="Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm_User">
+        <PropertyRef Name="Farm_User_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="Farm_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_Position_User_Position">
+    <End Type="AgriLogDBModel.User_Position" Role="User_Position" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Farm_User_User_Position" Role="Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Position">
+        <PropertyRef Name="User_Type_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="User_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Fault_Type">
+    <End Type="AgriLogDBModel.Fault_Type" Role="Fault_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fault_Type">
+        <PropertyRef Name="FT_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="FT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Importance">
+    <End Type="AgriLogDBModel.Importance" Role="Importance" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Infrastructure">
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Status">
+    <End Type="AgriLogDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Staff_Fault_Log">
+    <End Type="AgriLogDBModel.Fault_Log" Role="Fault_Log" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Fault_Staff" Role="Fault_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fault_Log">
+        <PropertyRef Name="Fault_ID" />
+      </Principal>
+      <Dependent Role="Fault_Staff">
+        <PropertyRef Name="Fault_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Staff_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Fault_Staff" Role="Fault_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Fault_Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Importance">
+    <End Type="AgriLogDBModel.Importance" Role="Importance" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Importance">
+    <End Type="AgriLogDBModel.Importance" Role="Importance" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Infrastructure_Infrastructure_Type">
+    <End Type="AgriLogDBModel.Infrastructure_Type" Role="Infrastructure_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure_Type">
+        <PropertyRef Name="Infrastructure_Type_ID" />
+      </Principal>
+      <Dependent Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Infrastructure_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Infrastructure">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Infrastructure">
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Infrastructure">
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Infrastructure">
+    <End Type="AgriLogDBModel.Infrastructure" Role="Infrastructure" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Insurance_Provider_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Insurance_Provider" Role="Insurance_Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Insurance_Provider">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_Trail_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Login_Trail" Role="Login_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Login_Trail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Maintenance_Type">
+    <End Type="AgriLogDBModel.Maintenance_Type" Role="Maintenance_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maintenance_Type">
+        <PropertyRef Name="MT_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="MT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Status">
+    <End Type="AgriLogDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Staff_Maintenance_Log">
+    <End Type="AgriLogDBModel.Maintenance_Log" Role="Maintenance_Log" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Maintenance_Staff" Role="Maintenance_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maintenance_Log">
+        <PropertyRef Name="Maintenance_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Staff">
+        <PropertyRef Name="Maintenance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Staff_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Maintenance_Staff" Role="Maintenance_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Password_Changelog_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Password_Changelog" Role="Password_Changelog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Password_Changelog">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Section_Type">
+    <End Type="AgriLogDBModel.Section_Type" Role="Section_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section_Type">
+        <PropertyRef Name="Section_Type_ID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="Section_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Section">
+    <End Type="AgriLogDBModel.Section" Role="Section" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Skill_Skill">
+    <End Type="AgriLogDBModel.Skill" Role="Skill" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Staff_Skill" Role="Staff_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Staff_Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Skill_Skill">
+    <End Type="AgriLogDBModel.Skill" Role="Skill" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Skill" Role="Task_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Task_Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Notification_Log_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Staff_Notification_Log" Role="Staff_Notification_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Staff_Notification_Log">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Skill_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Staff_Skill" Role="Staff_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Staff_Skill">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Staff">
+    <End Type="AgriLogDBModel.Staff" Role="Staff" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Task_Schedule" Role="Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Status">
+    <End Type="AgriLogDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Task_Schedule" Role="Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Status">
+    <End Type="AgriLogDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Repair" Role="Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Status">
+    <End Type="AgriLogDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Service" Role="Vehicle_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Skill_Task">
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Skill" Role="Task_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task_Skill">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task">
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task" Role="Task1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task1">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Task">
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task_Task_Schedule" Role="Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Type">
+    <End Type="AgriLogDBModel.Task_Type" Role="Task_Type" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task_Type">
+        <PropertyRef Name="Task_Type_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Task_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Notification_Log_User">
+    <End Type="AgriLogDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="AgriLogDBModel.User_Notification_Log" Role="User_Notification_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="User_Notification_Log">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle">
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Repair" Role="Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="Vehicle_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Vehicle_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Vehicle_Brand">
+    <End Type="AgriLogDBModel.Vehicle_Brand" Role="Vehicle_Brand" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Brand">
+        <PropertyRef Name="Vehicle_Brand_Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Vehicle_Brand_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Vehicle_Type">
+    <End Type="AgriLogDBModel.Vehicle_Type" Role="Vehicle_Type" Multiplicity="0..1" />
+    <End Type="AgriLogDBModel.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Type">
+        <PropertyRef Name="Vehicle_Type_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Vehicle_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Brand_Vehicle_Make">
+    <End Type="AgriLogDBModel.Vehicle_Make" Role="Vehicle_Make" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Brand" Role="Vehicle_Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Make">
+        <PropertyRef Name="Make_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Brand">
+        <PropertyRef Name="Make_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Brand_Vehicle_Model">
+    <End Type="AgriLogDBModel.Vehicle_Model" Role="Vehicle_Model" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Brand" Role="Vehicle_Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Model">
+        <PropertyRef Name="Model_Id" />
+      </Principal>
+      <Dependent Role="Vehicle_Brand">
+        <PropertyRef Name="Model_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle_Repair_Document">
+    <End Type="AgriLogDBModel.Vehicle_Repair_Document" Role="Vehicle_Repair_Document" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Repair" Role="Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Repair_Document">
+        <PropertyRef Name="VRD_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="VRD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle_Service_Provider">
+    <End Type="AgriLogDBModel.Vehicle_Service_Provider" Role="Vehicle_Service_Provider" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Repair" Role="Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Provider_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Provider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Vehicle_Service_Provider">
+    <End Type="AgriLogDBModel.Vehicle_Service_Provider" Role="Vehicle_Service_Provider" Multiplicity="1" />
+    <End Type="AgriLogDBModel.Vehicle_Service" Role="Vehicle_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Provider_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service">
+        <PropertyRef Name="Provider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

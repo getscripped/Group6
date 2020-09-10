@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51212c5b0f13428eac0a35092f892ed1" Name="Diagram1" ZoomLevel="11">
+        <EntityTypeShape EntityType="AgriLogDBModel.Audit_Trail" Width="1.5" PointX="6" PointY="35" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Clocked" Width="1.5" PointX="9.75" PointY="41" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Day_Of_Week" Width="1.5" PointX="21" PointY="40.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Equipment" Width="1.5" PointX="12.75" PointY="40.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Equipment_Type" Width="1.5" PointX="7.5" PointY="43.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Farm" Width="1.5" PointX="5.25" PointY="39.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Farm_Type" Width="1.5" PointX="3" PointY="47.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Farm_User" Width="1.5" PointX="3" PointY="28.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Farm_User_User_Position" Width="1.5" PointX="5.25" PointY="29.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.FarmHealth" Width="1.5" PointX="7.5" PointY="62.125" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Fault_Log" Width="1.5" PointX="15" PointY="39.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Fault_Staff" Width="1.5" PointX="17.25" PointY="40.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Fault_Type" Width="1.5" PointX="7.5" PointY="29.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Importance" Width="1.5" PointX="12.75" PointY="37.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Infrastructure" Width="1.5" PointX="12" PointY="50.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Infrastructure_Type" Width="1.5" PointX="9.75" PointY="55.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Insurance_Provider" Width="1.5" PointX="3" PointY="41.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Login_Trail" Width="1.5" PointX="3" PointY="44.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Maintenance_Log" Width="1.5" PointX="15" PointY="45.125" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Maintenance_Staff" Width="1.5" PointX="20.25" PointY="43.125" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Maintenance_Type" Width="1.5" PointX="12.75" PointY="57.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Password_Changelog" Width="1.5" PointX="3" PointY="38.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Province" Width="1.5" PointX="3" PointY="33.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Section" Width="1.5" PointX="9.75" PointY="50.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Section_Type" Width="1.5" PointX="7.5" PointY="59.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Skill" Width="1.5" PointX="7.5" PointY="56.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Staff" Width="1.5" PointX="7.5" PointY="38.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Staff_Notification_Log" Width="1.5" PointX="9.75" PointY="38.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Staff_Skill" Width="1.5" PointX="12.75" PointY="47.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Status" Width="1.5" PointX="12.75" PointY="34.125" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Task" Width="1.5" PointX="18" PointY="45.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Task_Skill" Width="1.5" PointX="20.25" PointY="50.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Task_Task_Schedule" Width="1.5" PointX="23.25" PointY="42.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Task_Type" Width="1.5" PointX="15.75" PointY="36.625" />
+        <EntityTypeShape EntityType="AgriLogDBModel.User" Width="1.5" PointX="0.75" PointY="34.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.User_Notification_Log" Width="1.5" PointX="3" PointY="35.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.User_Position" Width="1.5" PointX="3" PointY="26.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle" Width="1.5" PointX="14.25" PointY="50.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Brand" Width="1.5" PointX="12" PointY="61.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Make" Width="1.5" PointX="9.75" PointY="60.5" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Model" Width="1.5" PointX="9.75" PointY="62.875" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Repair" Width="1.5" PointX="16.5" PointY="50.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Repair_Document" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Service" Width="1.5" PointX="9.75" PointY="46.25" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Service_Document" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Service_Provider" Width="1.5" PointX="7.5" PointY="46.375" />
+        <EntityTypeShape EntityType="AgriLogDBModel.Vehicle_Type" Width="1.5" PointX="7.5" PointY="53.75" />
+        <EntityTypeShape EntityType="AgriLogDBModel.database_firewall_rules" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Audit_Trail_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Audit_Trail_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Clocked_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task_Schedule_Day_Of_Week" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Equipment_Equipment_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Equipment_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Equipment_Infrastructure" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Equipment_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Equipment" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Equipment" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Equipment" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Equipment_Type_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_Farm_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_Insurance_Provider" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_Province" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_User_Position_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_FarmHealth_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Type_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Section_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Section_Type_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Skill_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Staff_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Service_Provider_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Type_Farm" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_User_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_User_User_Position_Farm_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Farm_User_Position_User_Position" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Fault_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Importance" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Infrastructure" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Log_Status" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Staff_Fault_Log" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Fault_Staff_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Importance" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Importance" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Infrastructure_Infrastructure_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Infrastructure_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Infrastructure" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Infrastructure" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Infrastructure" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Insurance_Provider_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Login_Trail_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Maintenance_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Log_Status" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Staff_Maintenance_Log" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Maintenance_Staff_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Password_Changelog_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Section_Section_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Section" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Staff_Skill_Skill" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Skill_Skill" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Staff_Notification_Log_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Staff_Skill_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task_Schedule_Staff" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task_Schedule_Status" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Repair_Status" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Service_Status" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Skill_Task" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task_Schedule_Task" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Task_Task_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_User_Notification_Log_User" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Repair_Vehicle" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Vehicle_Brand" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Vehicle_Type" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Make" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Brand_Vehicle_Model" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Repair_Vehicle_Service_Provider" />
+        <AssociationConnector Association="AgriLogDBModel.FK_Vehicle_Service_Vehicle_Service_Provider" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

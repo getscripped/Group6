@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AgriLogDBEntities-Web.config Connection String" description="AgriLogDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.AgriLogDB.csdl|res://*/Models.AgriLogDB.ssdl|res://*/Models.AgriLogDB.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=agrilogbackend.database.windows.net;initial catalog=AgriLogDB;user id=master;password=73823651Agri;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\370\\FinalBackend\\AgriLogBackend\\AgriLogBackend\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AgriLogDBEntities']/@connectionString" />
+  </parameter>
+</parameters>

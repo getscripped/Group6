@@ -1,0 +1,1749 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgriLogDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Audit_Trail">
+    <Key>
+      <PropertyRef Name="Audit_Log_ID" />
+    </Key>
+    <Property Name="Audit_Log_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" />
+    <Property Name="User_Action" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Action_DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Affected_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clocked">
+    <Key>
+      <PropertyRef Name="Clocked_ID" />
+    </Key>
+    <Property Name="Clocked_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="Clocked_In_Time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Clocked_Out_Time" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Day_Of_Week">
+    <Key>
+      <PropertyRef Name="Day_ID" />
+    </Key>
+    <Property Name="Day_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Day_Description" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Equipment_ID" />
+    </Key>
+    <Property Name="Equipment_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Equipment_Type_ID" Type="int" />
+    <Property Name="Infrastructure_ID" Type="int" />
+    <Property Name="Equipment_Description" Type="varchar" MaxLength="50" />
+    <Property Name="Equipment_Condition" Type="varchar" MaxLength="50" />
+    <Property Name="Equipment_Cost" Type="varchar" MaxLength="50" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="20" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+    <Property Name="Section_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Equipment_Type">
+    <Key>
+      <PropertyRef Name="Equipment_Type_ID" />
+    </Key>
+    <Property Name="Equipment_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Equipment_Type_Description" Type="varchar" MaxLength="50" />
+    <Property Name="Farm_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Farm">
+    <Key>
+      <PropertyRef Name="Farm_ID" />
+    </Key>
+    <Property Name="Farm_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Farm_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Province_ID" Type="int" Nullable="false" />
+    <Property Name="IP_ID" Type="int" />
+    <Property Name="Farm_Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Farm_Size" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Farm_Address" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Farm_Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Farm_ContactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Farm_Avg_Health_Score" Type="int" Nullable="false" />
+    <Property Name="Is_Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Farm_Type">
+    <Key>
+      <PropertyRef Name="Farm_Type_ID" />
+    </Key>
+    <Property Name="Farm_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Farm_Type_Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Farm_User">
+    <Key>
+      <PropertyRef Name="Farm_User_ID" />
+    </Key>
+    <Property Name="Farm_User_ID" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Farm_User_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Farm_User_Surname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Farm_User_DOB" Type="date" Nullable="false" />
+    <Property Name="Farm_User_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Farm_User_Phone_Number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Farm_User_Image" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Farm_User_User_Position">
+    <Key>
+      <PropertyRef Name="farm_User_User_Position_ID" />
+    </Key>
+    <Property Name="Farm_User_ID" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="User_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+    <Property Name="farm_User_User_Position_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FarmHealth">
+    <Key>
+      <PropertyRef Name="Health_ID" />
+    </Key>
+    <Property Name="Health_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+    <Property Name="Health_Date_Calculated" Type="date" Nullable="false" />
+    <Property Name="Fault_Score" Type="int" />
+    <Property Name="Task_Score" Type="int" />
+    <Property Name="Vehicle_Score" Type="int" />
+    <Property Name="Maintenance_Score" Type="int" />
+    <Property Name="Overall_Score" Type="int" />
+  </EntityType>
+  <EntityType Name="Fault_Log">
+    <Key>
+      <PropertyRef Name="Fault_ID" />
+    </Key>
+    <Property Name="Fault_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FT_ID" Type="int" Nullable="false" />
+    <Property Name="Status_ID" Type="int" Nullable="false" />
+    <Property Name="Infrastructure_ID" Type="int" />
+    <Property Name="Equipment_ID" Type="int" />
+    <Property Name="Importance_ID" Type="int" Nullable="false" />
+    <Property Name="Fault_Description" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Fault_Start_Date" Type="date" Nullable="false" />
+    <Property Name="Fault_End_Date" Type="date" />
+    <Property Name="Fault_Image" Type="varchar" MaxLength="150" />
+    <Property Name="Section_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Fault_Staff">
+    <Key>
+      <PropertyRef Name="FaultStaff_Id" />
+    </Key>
+    <Property Name="Fault_ID" Type="int" Nullable="false" />
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="FaultStaff_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fault_Type">
+    <Key>
+      <PropertyRef Name="FT_ID" />
+    </Key>
+    <Property Name="FT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FT_Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Importance">
+    <Key>
+      <PropertyRef Name="Importance_ID" />
+    </Key>
+    <Property Name="Importance_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Importance_Description" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Infrastructure">
+    <Key>
+      <PropertyRef Name="Infrastructure_ID" />
+    </Key>
+    <Property Name="Infrastructure_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Infrastructure_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Section_ID" Type="int" Nullable="false" />
+    <Property Name="Infrastructure_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Infrastructure_Location" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Infrastructure_Size" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Is_Active" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Infrastructure_Type">
+    <Key>
+      <PropertyRef Name="Infrastructure_Type_ID" />
+    </Key>
+    <Property Name="Infrastructure_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Infrastructure_Type_Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Insurance_Provider">
+    <Key>
+      <PropertyRef Name="IP_ID" />
+    </Key>
+    <Property Name="IP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="IP_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IP_Reg_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IP_VAT_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IP_Phone_Number" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login_Trail">
+    <Key>
+      <PropertyRef Name="Trail_ID" />
+    </Key>
+    <Property Name="Trail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Login_DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Logout_DateTime" Type="datetime" />
+    <Property Name="User_IP_Address" Type="varchar" MaxLength="60" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maintenance_Log">
+    <Key>
+      <PropertyRef Name="Maintenance_ID" />
+    </Key>
+    <Property Name="Maintenance_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MT_ID" Type="int" Nullable="false" />
+    <Property Name="Status_ID" Type="int" Nullable="false" />
+    <Property Name="Equipment_ID" Type="int" />
+    <Property Name="Infrastructure_ID" Type="int" />
+    <Property Name="Importance_ID" Type="int" Nullable="false" />
+    <Property Name="Maintenance_Description" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="Maintenance_Start_Date" Type="date" Nullable="false" />
+    <Property Name="Maintenance_End_Date" Type="date" />
+    <Property Name="Maintenance_Image" Type="varchar" MaxLength="120" />
+    <Property Name="Section_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Maintenance_Staff">
+    <Key>
+      <PropertyRef Name="Mainstaff_Id" />
+    </Key>
+    <Property Name="Maintenance_ID" Type="int" Nullable="false" />
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="Mainstaff_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maintenance_Type">
+    <Key>
+      <PropertyRef Name="MT_ID" />
+    </Key>
+    <Property Name="MT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MT_Description" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Password_Changelog">
+    <Key>
+      <PropertyRef Name="Changelog_ID" />
+    </Key>
+    <Property Name="Changelog_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Date_Changed" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Province_ID" />
+    </Key>
+    <Property Name="Province_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Province_Description" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="Section_ID" />
+    </Key>
+    <Property Name="Section_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+    <Property Name="Section_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Section_Location" Type="varchar" MaxLength="150" />
+    <Property Name="Section_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Section_Size" Type="varchar" MaxLength="50" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section_Type">
+    <Key>
+      <PropertyRef Name="Section_Type_ID" />
+    </Key>
+    <Property Name="Section_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Section_Type_Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Skill">
+    <Key>
+      <PropertyRef Name="Skill_ID" />
+    </Key>
+    <Property Name="Skill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Skill_Description" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Staff_ID" />
+    </Key>
+    <Property Name="Staff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+    <Property Name="Staff_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Staff_Surname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Staff_Phone_Number" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Staff_DoB" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="Staff_Photo" Type="varchar" MaxLength="100" />
+    <Property Name="Staff_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff_Notification_Log">
+    <Key>
+      <PropertyRef Name="SNL_ID" />
+    </Key>
+    <Property Name="SNL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="SNL_Message" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date_Time_Sent" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff_Skill">
+    <Key>
+      <PropertyRef Name="StaffSkill_ID" />
+    </Key>
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="Skill_ID" Type="int" Nullable="false" />
+    <Property Name="StaffSkill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Status_ID" />
+    </Key>
+    <Property Name="Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status_Description" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Task_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Task_Type_ID" Type="int" Nullable="false" />
+    <Property Name="Importance_ID" Type="int" Nullable="false" />
+    <Property Name="Section_ID" Type="int" Nullable="false" />
+    <Property Name="Infrastructure_ID" Type="int" />
+    <Property Name="Equipment_ID" Type="int" />
+    <Property Name="Task_Description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Task_Duration" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Task_Skill">
+    <Key>
+      <PropertyRef Name="TS_ID" />
+    </Key>
+    <Property Name="Task_ID" Type="int" Nullable="false" />
+    <Property Name="Skill_ID" Type="int" Nullable="false" />
+    <Property Name="TS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Task_Task_Schedule">
+    <Key>
+      <PropertyRef Name="Schedule_ID" />
+    </Key>
+    <Property Name="Day_ID" Type="int" Nullable="false" />
+    <Property Name="Task_ID" Type="int" Nullable="false" />
+    <Property Name="Staff_ID" Type="int" Nullable="false" />
+    <Property Name="Schedule_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status_ID" Type="int" Nullable="false" />
+    <Property Name="Schedule_Start_Date" Type="date" Nullable="false" />
+    <Property Name="Schedule_End_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="Task_Type">
+    <Key>
+      <PropertyRef Name="Task_Type_ID" />
+    </Key>
+    <Property Name="Task_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Task_Type_Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="User_Password" Type="varchar" MaxLength="130" Nullable="false" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Notification_Log">
+    <Key>
+      <PropertyRef Name="UNL_ID" />
+    </Key>
+    <Property Name="UNL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="UNL_Message" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date_Time_Sent" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Position">
+    <Key>
+      <PropertyRef Name="User_Type_ID" />
+    </Key>
+    <Property Name="User_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Type_Description" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="Vehicle_ID" />
+    </Key>
+    <Property Name="Vehicle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vehicle_Type_ID" Type="int" />
+    <Property Name="Vehicle_Brand_ID" Type="int" />
+    <Property Name="Infrastructure_ID" Type="int" />
+    <Property Name="Section_ID" Type="int" />
+    <Property Name="Vehicle_Year" Type="varchar" MaxLength="4" />
+    <Property Name="Vehicle_Colour" Type="varchar" MaxLength="30" />
+    <Property Name="Vehicle_Mileage_Date_Of_Purchase" Type="varchar" MaxLength="8" />
+    <Property Name="Vehicle_Mileage_Current" Type="varchar" MaxLength="8" />
+    <Property Name="Vehicle_Service_Intervals" Type="varchar" MaxLength="8" />
+    <Property Name="Vehicle_Last_Service_Mileage" Type="varchar" MaxLength="8" />
+    <Property Name="Vehicle_Registration_Number" Type="varchar" MaxLength="15" />
+    <Property Name="Vehicle_Date_Of_Purchase" Type="date" />
+    <Property Name="Vehicle_Purchase_Price" Type="varchar" MaxLength="6" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="50" />
+    <Property Name="Farm_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Vehicle_Brand">
+    <Key>
+      <PropertyRef Name="Vehicle_Brand_Id" />
+    </Key>
+    <Property Name="Vehicle_Brand_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Make_ID" Type="int" Nullable="false" />
+    <Property Name="Model_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Make">
+    <Key>
+      <PropertyRef Name="Make_ID" />
+    </Key>
+    <Property Name="Make_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Make_Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vehicle_Model">
+    <Key>
+      <PropertyRef Name="Model_Id" />
+    </Key>
+    <Property Name="Model_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Model_Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vehicle_Repair">
+    <Key>
+      <PropertyRef Name="Vehicle_Repair_ID" />
+    </Key>
+    <Property Name="Vehicle_Repair_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Provider_ID" Type="int" Nullable="false" />
+    <Property Name="VRD_ID" Type="int" Nullable="false" />
+    <Property Name="Vehicle_ID" Type="int" Nullable="false" />
+    <Property Name="Status_ID" Type="int" Nullable="false" />
+    <Property Name="Vehicle_Repair_Date_Started" Type="date" Nullable="false" />
+    <Property Name="Vehicle_Repair_Date_Ended" Type="date" Nullable="false" />
+    <Property Name="Vehicle_Repair_Cost" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Repair_Document">
+    <Key>
+      <PropertyRef Name="VRD_ID" />
+    </Key>
+    <Property Name="VRD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VRD_Invoice" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service">
+    <Key>
+      <PropertyRef Name="Vehicle_Service_ID" />
+    </Key>
+    <Property Name="Vehicle_Service_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Provider_ID" Type="int" Nullable="false" />
+    <Property Name="Vehicle_Service_Document" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Vehicle_ID" Type="int" Nullable="false" />
+    <Property Name="Status_ID" Type="int" Nullable="false" />
+    <Property Name="Vehicle_Service_Mileage" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="Vehicle_Service_Start_Date" Type="date" Nullable="false" />
+    <Property Name="Vehicle_Service_End_Date" Type="date" Nullable="false" />
+    <Property Name="Vehicle_Service_Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service_Document">
+    <Key>
+      <PropertyRef Name="VSD_ID" />
+    </Key>
+    <Property Name="VSD_ID" Type="int" Nullable="false" />
+    <Property Name="VSD_INVOICE" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Service_Provider">
+    <Key>
+      <PropertyRef Name="Provider_ID" />
+    </Key>
+    <Property Name="Provider_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Provider_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Provider_Contact_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Provider_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Is_Active" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Provider_Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Farm_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehicle_Type">
+    <Key>
+      <PropertyRef Name="Vehicle_Type_ID" />
+    </Key>
+    <Property Name="Vehicle_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vehicle_Type_Description" Type="varchar" MaxLength="50" />
+    <Property Name="Farm_ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AgriLogDB.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="database_firewall_rules">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="start_ip_address" />
+      <PropertyRef Name="end_ip_address" />
+      <PropertyRef Name="create_date" />
+      <PropertyRef Name="modify_date" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="modify_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Audit_Trail_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Audit_Trail" Type="Self.Audit_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Audit_Trail">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Audit_Trail_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Audit_Trail" Type="Self.Audit_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Audit_Trail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clocked_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Clocked" Type="Self.Clocked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Clocked">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Equipment_Type">
+    <End Role="Equipment_Type" Type="Self.Equipment_Type" Multiplicity="0..1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment_Type">
+        <PropertyRef Name="Equipment_Type_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Equipment_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Infrastructure">
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="0..1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Type_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Equipment_Type" Type="Self.Equipment_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Equipment_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Farm_Type">
+    <End Role="Farm_Type" Type="Self.Farm_Type" Multiplicity="1" />
+    <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm_Type">
+        <PropertyRef Name="Farm_Type_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="Farm_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Insurance_Provider">
+    <End Role="Insurance_Provider" Type="Self.Insurance_Provider" Multiplicity="0..1" />
+    <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insurance_Provider">
+        <PropertyRef Name="IP_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="IP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_Province">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="Farm" Type="Self.Farm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Province_ID" />
+      </Principal>
+      <Dependent Role="Farm">
+        <PropertyRef Name="Province_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_Position_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Farm_User_User_Position" Type="Self.Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_Position_User_Position">
+    <End Role="User_Position" Type="Self.User_Position" Multiplicity="1" />
+    <End Role="Farm_User_User_Position" Type="Self.Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Position">
+        <PropertyRef Name="User_Type_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="User_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Farm_User" Type="Self.Farm_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Farm_User">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Farm_User_User_Position_Farm_User">
+    <End Role="Farm_User" Type="Self.Farm_User" Multiplicity="1" />
+    <End Role="Farm_User_User_Position" Type="Self.Farm_User_User_Position" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm_User">
+        <PropertyRef Name="Farm_User_ID" />
+      </Principal>
+      <Dependent Role="Farm_User_User_Position">
+        <PropertyRef Name="Farm_User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FarmHealth_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="FarmHealth" Type="Self.FarmHealth" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="FarmHealth">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Fault_Type">
+    <End Role="Fault_Type" Type="Self.Fault_Type" Multiplicity="1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fault_Type">
+        <PropertyRef Name="FT_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="FT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Importance">
+    <End Role="Importance" Type="Self.Importance" Multiplicity="1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Infrastructure">
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="0..1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Log_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Fault_Log">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Staff_Fault_Log">
+    <End Role="Fault_Log" Type="Self.Fault_Log" Multiplicity="1" />
+    <End Role="Fault_Staff" Type="Self.Fault_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fault_Log">
+        <PropertyRef Name="Fault_ID" />
+      </Principal>
+      <Dependent Role="Fault_Staff">
+        <PropertyRef Name="Fault_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Staff_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Fault_Staff" Type="Self.Fault_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Fault_Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fault_Type_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Fault_Type" Type="Self.Fault_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Fault_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Infrastructure_Infrastructure_Type">
+    <End Role="Infrastructure_Type" Type="Self.Infrastructure_Type" Multiplicity="1" />
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure_Type">
+        <PropertyRef Name="Infrastructure_Type_ID" />
+      </Principal>
+      <Dependent Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Infrastructure_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Infrastructure">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Insurance_Provider_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Insurance_Provider" Type="Self.Insurance_Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Insurance_Provider">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Login_Trail_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Login_Trail" Type="Self.Login_Trail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Login_Trail">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Importance">
+    <End Role="Importance" Type="Self.Importance" Multiplicity="1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Infrastructure">
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="0..1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Maintenance_Type">
+    <End Role="Maintenance_Type" Type="Self.Maintenance_Type" Multiplicity="1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maintenance_Type">
+        <PropertyRef Name="MT_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="MT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Log_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Log">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Staff_Maintenance_Log">
+    <End Role="Maintenance_Log" Type="Self.Maintenance_Log" Multiplicity="1" />
+    <End Role="Maintenance_Staff" Type="Self.Maintenance_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maintenance_Log">
+        <PropertyRef Name="Maintenance_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Staff">
+        <PropertyRef Name="Maintenance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Maintenance_Staff_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Maintenance_Staff" Type="Self.Maintenance_Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Maintenance_Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Password_Changelog_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Password_Changelog" Type="Self.Password_Changelog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Password_Changelog">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Section_Type">
+    <End Role="Section_Type" Type="Self.Section_Type" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section_Type">
+        <PropertyRef Name="Section_Type_ID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="Section_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Type_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Section_Type" Type="Self.Section_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Section_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Skill_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Skill">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Notification_Log_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Staff_Notification_Log" Type="Self.Staff_Notification_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Staff_Notification_Log">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Skill_Skill">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="Staff_Skill" Type="Self.Staff_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Staff_Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Skill_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Staff_Skill" Type="Self.Staff_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Staff_Skill">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Equipment_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Equipment_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Importance">
+    <End Role="Importance" Type="Self.Importance" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Importance">
+        <PropertyRef Name="Importance_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Importance_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Infrastructure">
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Skill_Skill">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+    <End Role="Task_Skill" Type="Self.Task_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Principal>
+      <Dependent Role="Task_Skill">
+        <PropertyRef Name="Skill_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Skill_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Task_Skill" Type="Self.Task_Skill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task_Skill">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Task1" Type="Self.Task" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task1">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Day_Of_Week">
+    <End Role="Day_Of_Week" Type="Self.Day_Of_Week" Multiplicity="1" />
+    <End Role="Task_Task_Schedule" Type="Self.Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day_Of_Week">
+        <PropertyRef Name="Day_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Day_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Task_Task_Schedule" Type="Self.Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Staff_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Staff_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Task_Task_Schedule" Type="Self.Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Schedule_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Task_Task_Schedule" Type="Self.Task_Task_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Task_ID" />
+      </Principal>
+      <Dependent Role="Task_Task_Schedule">
+        <PropertyRef Name="Task_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task_Type">
+    <End Role="Task_Type" Type="Self.Task_Type" Multiplicity="1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task_Type">
+        <PropertyRef Name="Task_Type_ID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Task_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Notification_Log_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User_Notification_Log" Type="Self.User_Notification_Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="User_Notification_Log">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Brand_Vehicle_Make">
+    <End Role="Vehicle_Make" Type="Self.Vehicle_Make" Multiplicity="1" />
+    <End Role="Vehicle_Brand" Type="Self.Vehicle_Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Make">
+        <PropertyRef Name="Make_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Brand">
+        <PropertyRef Name="Make_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Brand_Vehicle_Model">
+    <End Role="Vehicle_Model" Type="Self.Vehicle_Model" Multiplicity="1" />
+    <End Role="Vehicle_Brand" Type="Self.Vehicle_Brand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Model">
+        <PropertyRef Name="Model_Id" />
+      </Principal>
+      <Dependent Role="Vehicle_Brand">
+        <PropertyRef Name="Model_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Infrastructure">
+    <End Role="Infrastructure" Type="Self.Infrastructure" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infrastructure">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Infrastructure_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Vehicle_Repair" Type="Self.Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+    <End Role="Vehicle_Repair" Type="Self.Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="Vehicle_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Vehicle_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle_Repair_Document">
+    <End Role="Vehicle_Repair_Document" Type="Self.Vehicle_Repair_Document" Multiplicity="1" />
+    <End Role="Vehicle_Repair" Type="Self.Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Repair_Document">
+        <PropertyRef Name="VRD_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="VRD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Repair_Vehicle_Service_Provider">
+    <End Role="Vehicle_Service_Provider" Type="Self.Vehicle_Service_Provider" Multiplicity="1" />
+    <End Role="Vehicle_Repair" Type="Self.Vehicle_Repair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Provider_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Repair">
+        <PropertyRef Name="Provider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Provider_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="1" />
+    <End Role="Vehicle_Service_Provider" Type="Self.Vehicle_Service_Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Vehicle_Service" Type="Self.Vehicle_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Status_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Service_Vehicle_Service_Provider">
+    <End Role="Vehicle_Service_Provider" Type="Self.Vehicle_Service_Provider" Multiplicity="1" />
+    <End Role="Vehicle_Service" Type="Self.Vehicle_Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Service_Provider">
+        <PropertyRef Name="Provider_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Service">
+        <PropertyRef Name="Provider_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Type_Farm">
+    <End Role="Farm" Type="Self.Farm" Multiplicity="0..1" />
+    <End Role="Vehicle_Type" Type="Self.Vehicle_Type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farm">
+        <PropertyRef Name="Farm_ID" />
+      </Principal>
+      <Dependent Role="Vehicle_Type">
+        <PropertyRef Name="Farm_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Vehicle_Brand">
+    <End Role="Vehicle_Brand" Type="Self.Vehicle_Brand" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Brand">
+        <PropertyRef Name="Vehicle_Brand_Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Vehicle_Brand_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vehicle_Vehicle_Type">
+    <End Role="Vehicle_Type" Type="Self.Vehicle_Type" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle_Type">
+        <PropertyRef Name="Vehicle_Type_ID" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Vehicle_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AgriLogDBModelStoreContainer">
+    <EntitySet Name="Audit_Trail" EntityType="Self.Audit_Trail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clocked" EntityType="Self.Clocked" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Day_Of_Week" EntityType="Self.Day_Of_Week" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipment_Type" EntityType="Self.Equipment_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farm" EntityType="Self.Farm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farm_Type" EntityType="Self.Farm_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farm_User" EntityType="Self.Farm_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farm_User_User_Position" EntityType="Self.Farm_User_User_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FarmHealth" EntityType="Self.FarmHealth" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fault_Log" EntityType="Self.Fault_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fault_Staff" EntityType="Self.Fault_Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fault_Type" EntityType="Self.Fault_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Importance" EntityType="Self.Importance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Infrastructure" EntityType="Self.Infrastructure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Infrastructure_Type" EntityType="Self.Infrastructure_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Insurance_Provider" EntityType="Self.Insurance_Provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login_Trail" EntityType="Self.Login_Trail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance_Log" EntityType="Self.Maintenance_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance_Staff" EntityType="Self.Maintenance_Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance_Type" EntityType="Self.Maintenance_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Password_Changelog" EntityType="Self.Password_Changelog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section_Type" EntityType="Self.Section_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff_Notification_Log" EntityType="Self.Staff_Notification_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff_Skill" EntityType="Self.Staff_Skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task_Skill" EntityType="Self.Task_Skill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task_Task_Schedule" EntityType="Self.Task_Task_Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task_Type" EntityType="Self.Task_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Notification_Log" EntityType="Self.User_Notification_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Position" EntityType="Self.User_Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Brand" EntityType="Self.Vehicle_Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Make" EntityType="Self.Vehicle_Make" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Model" EntityType="Self.Vehicle_Model" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Repair" EntityType="Self.Vehicle_Repair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Repair_Document" EntityType="Self.Vehicle_Repair_Document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Service" EntityType="Self.Vehicle_Service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Service_Document" EntityType="Self.Vehicle_Service_Document" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Service_Provider" EntityType="Self.Vehicle_Service_Provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle_Type" EntityType="Self.Vehicle_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+      <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Audit_Trail_Farm" Association="Self.FK_Audit_Trail_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Audit_Trail" EntitySet="Audit_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Audit_Trail_User" Association="Self.FK_Audit_Trail_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Audit_Trail" EntitySet="Audit_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clocked_Staff" Association="Self.FK_Clocked_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Clocked" EntitySet="Clocked" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Equipment_Type" Association="Self.FK_Equipment_Equipment_Type">
+      <End Role="Equipment_Type" EntitySet="Equipment_Type" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Farm" Association="Self.FK_Equipment_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Infrastructure" Association="Self.FK_Equipment_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Section" Association="Self.FK_Equipment_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Type_Farm" Association="Self.FK_Equipment_Type_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Equipment_Type" EntitySet="Equipment_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Farm_Type" Association="Self.FK_Farm_Farm_Type">
+      <End Role="Farm_Type" EntitySet="Farm_Type" />
+      <End Role="Farm" EntitySet="Farm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Insurance_Provider" Association="Self.FK_Farm_Insurance_Provider">
+      <End Role="Insurance_Provider" EntitySet="Insurance_Provider" />
+      <End Role="Farm" EntitySet="Farm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_Province" Association="Self.FK_Farm_Province">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="Farm" EntitySet="Farm" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_Position_Farm" Association="Self.FK_Farm_User_Position_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_Position_User_Position" Association="Self.FK_Farm_User_Position_User_Position">
+      <End Role="User_Position" EntitySet="User_Position" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_User" Association="Self.FK_Farm_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Farm_User" EntitySet="Farm_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Farm_User_User_Position_Farm_User" Association="Self.FK_Farm_User_User_Position_Farm_User">
+      <End Role="Farm_User" EntitySet="Farm_User" />
+      <End Role="Farm_User_User_Position" EntitySet="Farm_User_User_Position" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FarmHealth_Farm" Association="Self.FK_FarmHealth_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="FarmHealth" EntitySet="FarmHealth" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Equipment" Association="Self.FK_Fault_Log_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Fault_Type" Association="Self.FK_Fault_Log_Fault_Type">
+      <End Role="Fault_Type" EntitySet="Fault_Type" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Importance" Association="Self.FK_Fault_Log_Importance">
+      <End Role="Importance" EntitySet="Importance" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Infrastructure" Association="Self.FK_Fault_Log_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Section" Association="Self.FK_Fault_Log_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Log_Status" Association="Self.FK_Fault_Log_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Staff_Fault_Log" Association="Self.FK_Fault_Staff_Fault_Log">
+      <End Role="Fault_Log" EntitySet="Fault_Log" />
+      <End Role="Fault_Staff" EntitySet="Fault_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Staff_Staff" Association="Self.FK_Fault_Staff_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Fault_Staff" EntitySet="Fault_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fault_Type_Farm" Association="Self.FK_Fault_Type_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Fault_Type" EntitySet="Fault_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Infrastructure_Infrastructure_Type" Association="Self.FK_Infrastructure_Infrastructure_Type">
+      <End Role="Infrastructure_Type" EntitySet="Infrastructure_Type" />
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Infrastructure_Section" Association="Self.FK_Infrastructure_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Insurance_Provider_User" Association="Self.FK_Insurance_Provider_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Insurance_Provider" EntitySet="Insurance_Provider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Login_Trail_User" Association="Self.FK_Login_Trail_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Login_Trail" EntitySet="Login_Trail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Equipment" Association="Self.FK_Maintenance_Log_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Importance" Association="Self.FK_Maintenance_Log_Importance">
+      <End Role="Importance" EntitySet="Importance" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Infrastructure" Association="Self.FK_Maintenance_Log_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Maintenance_Type" Association="Self.FK_Maintenance_Log_Maintenance_Type">
+      <End Role="Maintenance_Type" EntitySet="Maintenance_Type" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Section" Association="Self.FK_Maintenance_Log_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Log_Status" Association="Self.FK_Maintenance_Log_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Staff_Maintenance_Log" Association="Self.FK_Maintenance_Staff_Maintenance_Log">
+      <End Role="Maintenance_Log" EntitySet="Maintenance_Log" />
+      <End Role="Maintenance_Staff" EntitySet="Maintenance_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Maintenance_Staff_Staff" Association="Self.FK_Maintenance_Staff_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Maintenance_Staff" EntitySet="Maintenance_Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Password_Changelog_User" Association="Self.FK_Password_Changelog_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Password_Changelog" EntitySet="Password_Changelog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Farm" Association="Self.FK_Section_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Section_Type" Association="Self.FK_Section_Section_Type">
+      <End Role="Section_Type" EntitySet="Section_Type" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Type_Farm" Association="Self.FK_Section_Type_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Section_Type" EntitySet="Section_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Skill_Farm" Association="Self.FK_Skill_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Skill" EntitySet="Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Farm" Association="Self.FK_Staff_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Notification_Log_Staff" Association="Self.FK_Staff_Notification_Log_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Staff_Notification_Log" EntitySet="Staff_Notification_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Skill_Skill" Association="Self.FK_Staff_Skill_Skill">
+      <End Role="Skill" EntitySet="Skill" />
+      <End Role="Staff_Skill" EntitySet="Staff_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Skill_Staff" Association="Self.FK_Staff_Skill_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Staff_Skill" EntitySet="Staff_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Equipment" Association="Self.FK_Task_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Farm" Association="Self.FK_Task_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Importance" Association="Self.FK_Task_Importance">
+      <End Role="Importance" EntitySet="Importance" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Infrastructure" Association="Self.FK_Task_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Section" Association="Self.FK_Task_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Skill_Skill" Association="Self.FK_Task_Skill_Skill">
+      <End Role="Skill" EntitySet="Skill" />
+      <End Role="Task_Skill" EntitySet="Task_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Skill_Task" Association="Self.FK_Task_Skill_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Task_Skill" EntitySet="Task_Skill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task" Association="Self.FK_Task_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Task1" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Day_Of_Week" Association="Self.FK_Task_Task_Schedule_Day_Of_Week">
+      <End Role="Day_Of_Week" EntitySet="Day_Of_Week" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Staff" Association="Self.FK_Task_Task_Schedule_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Status" Association="Self.FK_Task_Task_Schedule_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Schedule_Task" Association="Self.FK_Task_Task_Schedule_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Task_Task_Schedule" EntitySet="Task_Task_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task_Type" Association="Self.FK_Task_Task_Type">
+      <End Role="Task_Type" EntitySet="Task_Type" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Notification_Log_User" Association="Self.FK_User_Notification_Log_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="User_Notification_Log" EntitySet="User_Notification_Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Brand_Vehicle_Make" Association="Self.FK_Vehicle_Brand_Vehicle_Make">
+      <End Role="Vehicle_Make" EntitySet="Vehicle_Make" />
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Brand_Vehicle_Model" Association="Self.FK_Vehicle_Brand_Vehicle_Model">
+      <End Role="Vehicle_Model" EntitySet="Vehicle_Model" />
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Farm" Association="Self.FK_Vehicle_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Infrastructure" Association="Self.FK_Vehicle_Infrastructure">
+      <End Role="Infrastructure" EntitySet="Infrastructure" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Status" Association="Self.FK_Vehicle_Repair_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle" Association="Self.FK_Vehicle_Repair_Vehicle">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle_Repair_Document" Association="Self.FK_Vehicle_Repair_Vehicle_Repair_Document">
+      <End Role="Vehicle_Repair_Document" EntitySet="Vehicle_Repair_Document" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Repair_Vehicle_Service_Provider" Association="Self.FK_Vehicle_Repair_Vehicle_Service_Provider">
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+      <End Role="Vehicle_Repair" EntitySet="Vehicle_Repair" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Section" Association="Self.FK_Vehicle_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Provider_Farm" Association="Self.FK_Vehicle_Service_Provider_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Status" Association="Self.FK_Vehicle_Service_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Vehicle_Service" EntitySet="Vehicle_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Service_Vehicle_Service_Provider" Association="Self.FK_Vehicle_Service_Vehicle_Service_Provider">
+      <End Role="Vehicle_Service_Provider" EntitySet="Vehicle_Service_Provider" />
+      <End Role="Vehicle_Service" EntitySet="Vehicle_Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Type_Farm" Association="Self.FK_Vehicle_Type_Farm">
+      <End Role="Farm" EntitySet="Farm" />
+      <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Vehicle_Brand" Association="Self.FK_Vehicle_Vehicle_Brand">
+      <End Role="Vehicle_Brand" EntitySet="Vehicle_Brand" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_Vehicle_Type" Association="Self.FK_Vehicle_Vehicle_Type">
+      <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
